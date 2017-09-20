@@ -82,7 +82,7 @@ $(function(){
 		source: new ol.source.OSM()
 	});
 	
-	var ytuLayer = new ol.layer.Image({
+	/*var ytuLayer = new ol.layer.Image({
 		source: new ol.source.ImageWMS({
 		ratio: 1,
 		url: 'http://localhost:8081/geoserver/localhost/wms',
@@ -128,7 +128,7 @@ $(function(){
 				LAYERS: 'localhost:St-Pettersburg-2',
 		  }
 		})
-	  });
+	  });*/
 	
 	var ytuTF = document.getElementById("ytu").checked;
 	var usaTF = document.getElementById("usa-population").checked;
@@ -138,7 +138,7 @@ $(function(){
 	ytuLayer.setVisible(false);
 	usaStatesLayer.setVisible(false);
 	istanbulUtmLayer.setVisible(false);
-	//piterLayer.setVisible(false);
+	piterLayer.setVisible(false);
 	
 	if(ytuTF)
 		ytuLayer.setVisible(true);
