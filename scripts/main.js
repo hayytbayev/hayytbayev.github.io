@@ -38,43 +38,7 @@ function applyInitialUIState() {
 	}
 }
 
-$(function(){
-	$('.sidebar-left .slide-submenu').on('click',function() {
-		var thisEl = $(this);
-		thisEl.closest('.sidebar-body').fadeOut('slide',function(){
-			$('.mini-submenu-left').fadeIn();
-			applyMargins();
-		});
-	});
-
-	$('.mini-submenu-left').on('click',function() {
-		var thisEl = $(this);
-		$('.sidebar-left .sidebar-body').toggle('slide');
-		thisEl.hide();
-		applyMargins();
-	});
-
-	$('.sidebar-right .slide-submenu').on('click',function() {
-		var thisEl = $(this);
-		thisEl.closest('.sidebar-body').fadeOut('slide',function(){
-			$('.mini-submenu-right').fadeIn();
-			applyMargins();
-		});
-	});
-
-	$('.mini-submenu-right').on('click',function() {
-		var thisEl = $(this);
-		$('.sidebar-right .sidebar-body').toggle('slide');
-		thisEl.hide();
-		applyMargins();
-	});
-
-	$(window).on("resize", applyMargins);
-
-	
-	applyInitialUIState();
-	applyMargins();
-	
+function loadMap(){
 	//sonradan eklenenler
 	var format = 'image/png';
 			
@@ -82,7 +46,7 @@ $(function(){
 		source: new ol.source.OSM()
 	});
 	
-	/*var ytuLayer = new ol.layer.Image({
+	var ytuLayer = new ol.layer.Image({
 		source: new ol.source.ImageWMS({
 		ratio: 1,
 		url: 'http://localhost:8081/geoserver/localhost/wms',
@@ -128,7 +92,7 @@ $(function(){
 				LAYERS: 'localhost:St-Pettersburg-2',
 		  }
 		})
-	  });*/
+	  });
 	
 	var ytuTF = document.getElementById("ytu").checked;
 	var usaTF = document.getElementById("usa-population").checked;
@@ -159,4 +123,44 @@ $(function(){
 			zoom: 2
 		})
 	});
+}
+
+$(function(){
+	$('.sidebar-left .slide-submenu').on('click',function() {
+		var thisEl = $(this);
+		thisEl.closest('.sidebar-body').fadeOut('slide',function(){
+			$('.mini-submenu-left').fadeIn();
+			applyMargins();
+		});
+	});
+
+	$('.mini-submenu-left').on('click',function() {
+		var thisEl = $(this);
+		$('.sidebar-left .sidebar-body').toggle('slide');
+		thisEl.hide();
+		applyMargins();
+	});
+
+	$('.sidebar-right .slide-submenu').on('click',function() {
+		var thisEl = $(this);
+		thisEl.closest('.sidebar-body').fadeOut('slide',function(){
+			$('.mini-submenu-right').fadeIn();
+			applyMargins();
+		});
+	});
+
+	$('.mini-submenu-right').on('click',function() {
+		var thisEl = $(this);
+		$('.sidebar-right .sidebar-body').toggle('slide');
+		thisEl.hide();
+		applyMargins();
+	});
+
+	$(window).on("resize", applyMargins);
+
+	
+	applyInitialUIState();
+	applyMargins();
+	
+	loadMap();
 });	
