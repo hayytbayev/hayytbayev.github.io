@@ -238,7 +238,6 @@
 							<div class="tab-content">
 								<div class="tab-pane active">
 									<label class="list-group-item"><input id="istanbul-utm" onclick="loadMap();" type="checkbox" value=""> Intanbul UTM</label>
-									<label class="list-group-item"><input id="piter" onclick="loadMap();" type="checkbox" value=""> St Petersburg</label>
 								</div>
 							</div>
 						</div>
@@ -332,27 +331,13 @@
 				})
 			});
 			
-			var piterLayer = new ol.layer.Image({
-				source: new ol.source.ImageWMS({
-				  ratio: 1,
-				  url: 'http://localhost:8081/geoserver/localhost/wms',
-				  params: {'FORMAT': format,
-						   'VERSION': '1.1.1',  
-						STYLES: '',
-						LAYERS: 'localhost:St-Pettersburg-2',
-				  }
-				})
-			  });
-			
 			var ytuTF = document.getElementById("ytu").checked;
 			var usaTF = document.getElementById("usa-population").checked;
 			var istTF = document.getElementById("istanbul-utm").checked;
-			var piterTF = document.getElementById("piter").checked;
 			
 			ytuLayer.setVisible(false);
 			usaStatesLayer.setVisible(false);
 			istanbulUtmLayer.setVisible(false);
-			//piterLayer.setVisible(false);
 			
 			if(ytuTF)
 				ytuLayer.setVisible(true);
@@ -360,10 +345,8 @@
 				usaStatesLayer.setVisible(true);
 			if(istTF)
 				istanbulUtmLayer.setVisible(true);
-			if(piterTF)
-				piterLayer.setVisible(true);
 			
-			var allLayers = [mapLayer,ytuLayer,usaStatesLayer,istanbulUtmLayer,piterLayer];
+			var allLayers = [mapLayer,ytuLayer,usaStatesLayer,istanbulUtmLayer];
 			
 			var map = new ol.Map({
 				target: "map",
