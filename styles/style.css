@@ -76,3 +76,9 @@ body {
 	height:150px;
 	overflow-y:scroll;
 }
+
+#myposition > .ol-mouse-position {
+  position: relative;
+  margin-left:20px;
+  font-size: 30px;
+}
